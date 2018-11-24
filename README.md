@@ -58,16 +58,6 @@ require('./plugins').initHooks();
 
 3. Add the hooks you want to trigger
 Here is the post-html hook:
-`current/core/server/lib/mobiledoc/converters/markdown-converter.js:51`
-```javascript
- module.exports = {
-     render: function (markdown) {
-+        const html = converter.render(markdown);
-+        return triggerHook(postHtml.name, html)[0];
-     }
- };
-```
-
 `current/core/server/lib/mobiledoc/converters/mobiledoc-converter.js:120`
 ```javascript
      modifier.modifyChildren(rendered.result);
@@ -76,3 +66,5 @@ Here is the post-html hook:
 +    return triggerHook(postHtml.name, html)[0];
  },
 ```
+
+Note: we don't need to add the hook to the markdown converter, as the markdown result is passed to the mobiledoc one.
