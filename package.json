@@ -1,0 +1,23 @@
+{
+  "name": "ghost-hooks",
+  "version": "1.0.0",
+  "description": "Add hooks and plugins to ghost",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AntonyGarand/ghost_plugins.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AntonyGarand/ghost_plugins/issues"
+  },
+  "homepage": "https://github.com/AntonyGarand/ghost_plugins#readme",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.2",
+    "highlight.js": "^9.13.1"
+  }
+}
