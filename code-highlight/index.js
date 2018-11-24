@@ -1,5 +1,7 @@
 const cheerio = require('cheerio');
 const highLight = require('highlight.js');
+const Entities = require('html-entities').AllHtmlEntities;
+const entities = new Entities();
 
 const {hooks: {addHookListener}, systemHooks: {postHtml}} = require('../index');
 
@@ -9,17 +11,25 @@ const settings = {
     init: () => {
         addHookListener(postHtml.name, (html, ...args) => {
             // Highlight the code blocks of the page
+            console.log('HTML\n', html);
             const $ = cheerio.load(html, {
                 xmlMode: true,
                 decodeEntities: false
             });
 
-            $('pre>code').each((index,rawTag) => {
-                const tag = cheerio(rawTag);
-                const before = tag.html();
+            $('pre>code').each((index, rawTag) => {
+                const tag = cheerio(rawTag, {
+                    xmlMode: true,
+                    decodeEntities: false
+                });
+                const before = entities.decode(entities.decode(tag.html()));
+
                 const after = highLight.highlightAuto(before).value;
-                tag.html(after);
+                console.log('Before-after', before, '\n\n', after);
+
+                tag.html(entities.encode(after));
             });
+            console.log('Done');
 
             return [
                 $.html(),
