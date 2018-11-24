@@ -23,13 +23,10 @@ const settings = {
                     decodeEntities: false
                 });
                 const before = entities.decode(entities.decode(tag.html()));
-
                 const after = highLight.highlightAuto(before).value;
-                console.log('Before-after', before, '\n\n', after);
 
                 tag.html(entities.encode(after));
             });
-            console.log('Done');
 
             return [
                 $.html(),
