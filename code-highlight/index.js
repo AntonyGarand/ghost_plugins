@@ -14,7 +14,7 @@ const settings = {
                 decodeEntities: false
             });
 
-            $('code').each((index,rawTag) => {
+            $('pre>code').each((index,rawTag) => {
                 const tag = cheerio(rawTag);
                 const before = tag.html();
                 const after = highLight.highlightAuto(before).value;
