@@ -8,7 +8,7 @@ const hookTypes = {
 const hooks = {
     postHtml: {
         name: 'postHtml',
-        description: 'Modify the HTML after it has been converted to HTML',
+        description: 'Modify the HTML resulting from markdown or mobiledoc',
         type: hookTypes.system
     }
 };

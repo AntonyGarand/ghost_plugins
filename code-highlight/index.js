@@ -21,8 +21,6 @@ const settings = {
                 tag.html(after);
             });
 
-            console.log('From:\n', html,'\nTo:\n', $.html());
-
             return [
                 $.html(),
                 ...args
